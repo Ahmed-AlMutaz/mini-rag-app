@@ -6,9 +6,10 @@ from controllers import DataController , ProjectController
 import aiofiles
 from models import ResponseSignal
 import logging
+import uvicorn
 
 
-logger = logging.getLogger(uvicorn.error)
+logger = logging.getLogger("uvicorn.error")
 
 
 
@@ -35,7 +36,10 @@ async def upload_data(project_id: str, file: UploadFile = File , app_sittings: S
         )   
     
     project_dir_path = ProjectController().get_Project_Path(project_id=project_id)
-    file_path = data_controller.generate_unique_filename(orig_filename = file.filename , project_id = project_id)
+
+    file_path , file_id = data_controller.generate_unique_filepath(
+        orig_filename = file.filename ,
+          project_id = project_id)
 
 
     try :
@@ -47,7 +51,7 @@ async def upload_data(project_id: str, file: UploadFile = File , app_sittings: S
     except Exception as e:
 
         logger.error(f"File upload failed: {e}")
-        
+
         return JSONResponse(
             status_code=status.HTTP_400_BAD_REQUEST,
             content={
@@ -59,7 +63,7 @@ async def upload_data(project_id: str, file: UploadFile = File , app_sittings: S
         status_code=status.HTTP_200_OK,
         content={
             "signal": ResponseSignal.File_Upload_Success.value,
-            "file_path": file_path
+            "file_id": file_id
         }
     )
     
