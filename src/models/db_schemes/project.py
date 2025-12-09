@@ -3,6 +3,7 @@ from typing import Optional
 from bson.objected import ObjectId
 
 
+
 class project(BaseModel):
     _id : Optional[ ObjectId ]
     project_id : str = Field(..., min_length = 1)
@@ -10,7 +11,7 @@ class project(BaseModel):
     @validator('project_id')
     def validate_project_id(cls , value):
         if not value.isalnum():
-            rise ValueError('projet_id must be Alphanumeric')
+            raise ValueError('project_id must be Alphanumeric')
 
         return value
     
