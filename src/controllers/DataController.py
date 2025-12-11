@@ -13,10 +13,10 @@ class DataController(BaseController):
         self.size_scale = 1048576 # Convert bytes to MB
 
 
-        if file.content_type not in self.app_sittings.File_Allowed_Types:
+        if file.content_type not in self.app_settings.FILE_ALLOWED_TYPES:
             return False , ResponseSignal.File_Type_Not_Supported.value
 
-        if file.size > self.app_sittings.File_Max_Size_MB * self.size_scale:
+        if file.size > self.app_settings.FILE_MAX_SIZE * self.size_scale:
             return False, ResponseSignal.File_Size_Exceeded.value
 
         return True , ResponseSignal.File_Validated_Success.value
@@ -24,12 +24,12 @@ class DataController(BaseController):
 
 
     
-    def generate_unique_filepath(self ,orig_filename : str , project_id: str) :
+    def generate_unique_filepath(self ,orig_file_name : str , project_id: str) :
 
         random_key = self.generate_random_string()
         project_path = ProjectController().get_Project_Path(project_id = project_id)
 
-        cleaned_filename = self.get_clean_filename(orig_filename = orig_filename)
+        cleaned_filename = self.get_clean_filename(orig_filename = orig_file_name)
 
         new_file_path = os.path.join(project_path, random_key + "_" + cleaned_filename)
 
