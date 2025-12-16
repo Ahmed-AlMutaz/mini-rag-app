@@ -23,7 +23,7 @@ class DataChunk(BaseModel):
 
             "name" :" chunk_project_id_1_index_1",
 
-            "unique": False
+            "unique": True
 
              }
 
