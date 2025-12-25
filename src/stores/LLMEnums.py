@@ -1,9 +1,14 @@
 from enum import Enum
 
 class LLMEnums(Enum):
+        OPENAI = "OPENAI"
+        COHERE = "COHERE"
+        ANTHROPIC = "ANTHROPIC"
 
-    OPENAI = "OPENAI"
-    COHERE = "COHERE"
-    ANTHROPIC = "ANTHROPIC"
+class OpenAIEnums(Enum):
+        SYSTEM = "system"
+        USER = "user"
+        ASSISTANT = "assistant"
+
 
 
