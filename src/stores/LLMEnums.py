@@ -11,9 +11,10 @@ class OpenAIEnums(Enum):
         ASSISTANT = "assistant"
 
 class CohereEnums(Enum):
-        SYSTEM = "system"
-        USER = "user"
-        ASSISTANT = "assistant"
+        SYSTEM = "SYSTEM"
+        USER = "USER"
+        ASSISTANT = "CHATBOT"
+        
 class DocumentTypeEnums(Enum):
         DOCUMENT = "document"
         QUERY = "query"
