@@ -13,8 +13,11 @@ class Settings(BaseSettings):
     MONGODB_URL: str
     MONGODB_DATABASE: str
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> master
     GENERATION_BACKEND: str
     EMBEDDING_BACKEND: str
 
@@ -22,7 +25,10 @@ class Settings(BaseSettings):
     OPENAI_API_URL: str = None
     COHERE_API_KEY: str = None
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
     GENERATION_MODEL_ID: str = None
     EMBEDDING_MODEL_ID: str = None
     EMBEDDING_MODEL_SIZE: int = None
@@ -30,15 +36,28 @@ class Settings(BaseSettings):
     GENERATION_DAFAULT_MAX_TOKENS: int = None
     GENERATION_DAFAULT_TEMPERATURE: float = None
 
+<<<<<<< HEAD
 
         
     VECTOR_DB_BACKEND: str
     VECTOR_DB_PATH: str 
     VECTOR_DB_DISTANCE_METHOD : str = None
 
+=======
+    VECTOR_DB_BACKEND : str
+    VECTOR_DB_PATH : str
+    VECTOR_DB_DISTANCE_METHOD: str = None
+
+    PRIMARY_LANG: str = "en"
+    DEFAULT_LANG: str = "en"
+>>>>>>> master
 
     class Config:
         env_file = ".env"
 
 def get_settings():
+<<<<<<< HEAD
     return Settings()
+=======
+    return Settings()
+>>>>>>> master

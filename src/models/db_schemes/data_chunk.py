@@ -23,4 +23,12 @@ class DataChunk(BaseModel):
                 "name": "chunk_project_id_index_1",
                 "unique": False
             }
+<<<<<<< HEAD
         ]
+=======
+        ]
+    
+class RetrievedDocument(BaseModel):
+    text: str
+    score: float
+>>>>>>> master

@@ -8,6 +8,7 @@ class ProjectModel(BaseDataModel):
         super().__init__(db_client=db_client)
         self.collection = self.db_client[DataBaseEnum.COLLECTION_PROJECT_NAME.value]
 
+<<<<<<< HEAD
 
     @classmethod 
     async def create_instance(cls, db_client: object):
@@ -26,15 +27,34 @@ class ProjectModel(BaseDataModel):
             for index in indexs:
                 await self.collection.create_index(
                     keys=index["key"],
+=======
+    @classmethod
+    async def create_instance(cls, db_client: object):
+        instance = cls(db_client)
+        await instance.init_collection()
+        return instance
+
+    async def init_collection(self):
+        all_collections = await self.db_client.list_collection_names()
+        if DataBaseEnum.COLLECTION_PROJECT_NAME.value not in all_collections:
+            self.collection = self.db_client[DataBaseEnum.COLLECTION_PROJECT_NAME.value]
+            indexes = Project.get_indexes()
+            for index in indexes:
+                await self.collection.create_index(
+                    index["key"],
+>>>>>>> master
                     name=index["name"],
                     unique=index["unique"]
                 )
 
 
+<<<<<<< HEAD
 
 
         
 
+=======
+>>>>>>> master
     async def create_project(self, project: Project):
 
         result = await self.collection.insert_one(project.dict(by_alias=True, exclude_unset=True))
@@ -74,4 +94,8 @@ class ProjectModel(BaseDataModel):
                 Project(**document)
             )
 
+<<<<<<< HEAD
         return projects, total_pages
+=======
+        return projects, total_pages
+>>>>>>> master

@@ -52,4 +52,10 @@ class DataController(BaseController):
         # replace spaces with underscore
         cleaned_file_name = cleaned_file_name.replace(" ", "_")
 
+<<<<<<< HEAD
         return cleaned_file_name
+=======
+        return cleaned_file_name
+
+
+>>>>>>> master
